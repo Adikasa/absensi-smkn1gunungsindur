@@ -52,7 +52,7 @@ Aplikasi Web Sistem Absensi Sekolah Berbasis QR Code adalah sebuah proyek yang b
 
 > #### Notifikasi via WhatsApp
 >
-> ![Notifikasi WA](./screenshots/notif-wa.png)
+<!--[Notifikasi WA](./screenshots/notif-wa.png)-->
 
 ### Tampilan Login Petugas
 
