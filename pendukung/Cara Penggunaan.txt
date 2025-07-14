@@ -1,0 +1,58 @@
+Cara Penggunaan
+Persyaratan
+Composer.
+PHP 8.1+ dan MySQL/MariaDB atau XAMPP versi 8.1+ dengan mengaktifkan extension intl dan gd.
+Pastikan perangkat memiliki kamera/webcam untuk menjalankan qr scanner. Bisa juga menggunakan kamera HP dengan bantuan software DroidCam.
+Instalasi
+Clone/Download source code proyek ini.
+
+Install dependencies yang diperlukan dengan cara menjalankan perintah berikut di terminal:
+
+composer install
+Jika belum terdapat file .env, rename file .env.example menjadi .env
+
+Buat database db_absensi(sesuaikan dengan yang terdapat di .env) di phpMyAdmin / mysql
+
+Jalankan migrasi database untuk membuat struktur tabel yang diperlukan. Ketikkan perintah berikut di terminal:
+
+php spark migrate --all
+Jalankan web server (contoh Apache, XAMPP, etc)
+
+Atau gunakan php spark serve (atur baseURL di .env menjadi http://localhost:8080/ terlebih dahulu).
+
+Lalu jalankan aplikasi di browser.
+
+Login menggunakan krendensial superadmin:
+
+username : superadmin
+password : superadmin
+Izinkan akses kamera.
+
+Konfigurasi
+Important
+
+Konfigurasi file .env untuk mengatur base url(terutama jika melakukan hosting), koneksi database dan pengaturan lainnya sesuai dengan lingkungan pengembangan Anda.
+
+Untuk mengaktifkan notifikasi WhatsApp, pertama-tama ubah variabel .env berikut dari false menjadi true.
+
+# .env
+# WA_NOTIFICATION=false # sebelum
+WA_NOTIFICATION=true
+Lalu masukkan token WhatsApp API.
+
+# .env
+WA_NOTIFICATION=true
+WHATSAPP_PROVIDER=Fonnte
+WHATSAPP_TOKEN=XXXXXXXXXXXXXXXXX # ganti dengan token anda
+Untuk mendapatkan token, daftar di website fonnte terlebih dahulu. Lalu daftarkan device anda dan dapatkan token Fonnte Whatsapp API
+
+Untuk mengubah konfigurasi nama sekolah, tahun ajaran logo sekolah dll sudah disediakan pengaturan (khusus untuk superadmin).
+
+Logo Sekolah Rekomendasi 100x100px atau 1:1 dan berformat PNG/JPG.
+
+Jika ingin mengubah email, username & password dari superadmin, buka file app\Database\Migrations\2023-08-18-000004_AddSuperadmin.php lalu ubah & sesuaikan kode berikut:
+
+// INSERT INITIAL SUPERADMIN
+$email = 'adminsuper@gmail.com';
+$username = 'superadmin';
+$password = 'superadmin';
